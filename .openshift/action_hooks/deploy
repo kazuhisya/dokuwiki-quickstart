@@ -33,6 +33,11 @@ if [ ! -d ${data_dir} ]; then
   mkdir -p ${OPENSHIFT_DATA_DIR}data
   mv ${install_dir}/data/* ${data_dir}/
   rm -rf ${install_dir}/data
+  
+  # TimeZone Settings
+  echo "<?php" > ${install_dir}/conf/local.protected.php
+  echo "  date_default_timezone_set(\"Asia/Tokyo\");" >> ${install_dir}/conf/local.protected.php
+  echo "?>" >> ${install_dir}/conf/local.protected.php
 fi
 
 if [ ! -d "${dest_dir}" ]; then
